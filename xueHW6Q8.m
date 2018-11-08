@@ -12,7 +12,7 @@
 %   baryEval2.m
 %   baryEval1.m
 %   lagrangeEval.m
-% Hey cam
+%
 % Notes
 %
 % Author
