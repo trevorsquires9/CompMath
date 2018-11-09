@@ -6,7 +6,7 @@
 %
 % AUTHOR
 %   Trevor Squires
-%
+% Hey zach
 % ARGUMENTS
 %   f - function handle
 %   a - left end point
