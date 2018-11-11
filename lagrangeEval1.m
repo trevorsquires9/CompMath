@@ -10,7 +10,8 @@
 % ARGUMENTS
 %   x - n x 1 vector of distinct abcissa points
 %   y - n x 1 vector of ordinate points
-%   lx - barycentric weights computed previously
+%   mu - barycentric weights computed previously   
+%   x0 - m x 1 vector of evaluation points
 %
 % OUTPUT
 %   lx - Lagrange interpolation evaluated at x0
@@ -22,10 +23,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [lx] = lagrangeEval1(x,y,mu,x0)
-
-if sum(x == x0) ~= 0
-    error('The new point must not be equal to any of the data points')
-end
 
 n = length(x)-1;
 lx = 0;

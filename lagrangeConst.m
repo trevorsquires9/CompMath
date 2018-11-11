@@ -9,7 +9,6 @@
 %
 % ARGUMENTS
 %   x - n x 1 vector of distinct abcissa points
-%   y - n x 1 vector of ordinate points
 %
 % OUTPUT
 %   w - barycentric weights
@@ -20,18 +19,9 @@
 %   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [w] = lagrangeConst(x,y)
+function [w] = lagrangeConst(x)
 
 n = length(x);
-
-if length(y) ~= n
-    error('The dimension of x and y must be the same')
-end
-
-m = size(y);
-if m(1) ~= n
-    y = y';
-end
 
 w = zeros(1,n);
 

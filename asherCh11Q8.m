@@ -6,7 +6,7 @@
 %   Problem 11.8
 %
 % Function Dependencies
-%   normalEq.m
+%   None
 %
 % Notes
 %   None

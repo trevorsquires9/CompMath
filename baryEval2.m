@@ -5,7 +5,7 @@
 %   Computes l(x0) using given weights and type 2 formula
 %
 % AUTHOR
-%   Trevor Squires and Hamid
+%   Trevor Squires
 %
 % ARGUMENTS
 %   x - n x 1 vector of distinct abcissa points

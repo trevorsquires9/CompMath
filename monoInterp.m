@@ -17,6 +17,7 @@
 % NOTES
 %   Asserts the size of each vector
 %   Requires all points in x to be distinct (for nonsingularity)
+%   Returns coefficients in descending order
 %   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -39,6 +40,7 @@ for i = 1:n
 end
 
 c = mat\y;
+c = flipud(c);
 
 
 end
