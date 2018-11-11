@@ -21,7 +21,7 @@ close all;
 
 %% Initialization
 f = @(x) exp(3*x).*sin(200.*x.^2)./(1+20.*x.^2);
-j = 4:14;
+j = 4:19;
 n = 2.^j;
 N = length(n);
 err = zeros(1,N);

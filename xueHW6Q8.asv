@@ -41,7 +41,7 @@ err = zeros(1,3);
 
 for j = 1:3
     fs = f(s{j});
-    ls = baryEval1(x,y,mu,s{j});
+    ls = baryEval2(x,y,mu,s{j});
     err(j) = norm(fs-ls);
 end
 

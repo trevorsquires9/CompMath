@@ -28,7 +28,7 @@ lagrangeCoeff = baryWeights(x);
 [newtonCoeff,table] = divdif(x,y);
 
 %% Evaluation
-t = sort(rand(1,100)*3-1,'descend');
+t = sort(rand(1,1000)*3-1,'descend');
 monoY = polyval(monoCoeff,t);
 lagrangeY = baryEval2(x,y,lagrangeCoeff,t);
 newtonY = evalNewt(x,newtonCoeff,t);
