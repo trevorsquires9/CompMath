@@ -28,6 +28,7 @@ a = 0.17;
 b = 0.31;
 
 %% Part a
+fprintf('Part a\n')
 n = 120;
 x = linspace(a,b,n+1);
 y = f(x);
@@ -39,13 +40,16 @@ s{2} = rand(1,checkPts)/10+0.185;
 s{3} = rand(1,checkPts)*0.14+0.17;
 err = zeros(1,3);
 
+
 for j = 1:3
     fs = f(s{j});
     ls = baryEval1(x,y,mu,s{j});
     err(j) = norm(fs-ls);
+    fprintf('The norm of the error in interval %d is %e\n',j,err(j))
 end
 
 %% Part b
+fprintf('\nPart b\n')
 x = chebyshevPoints(a,b,n);
 y = f(x);
 mu = chebyshevWeights(n+1);
@@ -61,12 +65,14 @@ for j = 1:3
     ls = zeros(1,checkPts);
     
     for i = 1:checkPts
-        ls(i) = lagrangeEval2(x,y,mu,s{j}(i));
+        ls(i) = baryEval2(x,y,mu,s{j}(i));
     end
     err(j) = norm(fs-ls);
+    fprintf('The norm of the error in interval %d is %e\n',j,err(j))
 end
 
 %% Part c
+fprintf('\nPart c\n')
 a = 0.1596;
 b = 0.3175;
 
@@ -82,6 +88,7 @@ for k = 1:length(n)
     fs = f(s);
     ls = baryEval2(x,y,mu,s);
     err(k) = norm(fs-ls);
+    fprintf('The norm of the error with n = %d is %e\n',n(k),err(k))
 end
 
 
@@ -95,7 +102,8 @@ for k = 1:length(n)
     tic
     mu = chebyshevWeights(n(k)+1);
     baryEval2(x,y,mu,s);
-    toc
+    time = toc;
+    fprintf('Elapsed time is %0.6f seconds for n = %d.\n',time,n(k))
 end
 
 fprintf('\nType 1 Evaluation\n')
@@ -105,7 +113,8 @@ for k = 1:length(n)
     tic
     mu = chebyshevWeights(n(k)+1);
     baryEval1(x,y,mu,s);
-    toc
+    time = toc;
+    fprintf('Elapsed time is %0.6f seconds for n = %d.\n',time,n(k))
 end
 
 fprintf('\nClassical Evaluation\n')
@@ -114,5 +123,6 @@ for k = 1:1
     y = f(x);
     tic
     lagrangeEval(x,y,s);
-    toc
+    time = toc;
+    fprintf('Elapsed time is %0.6f seconds for n = %d.\n',time,n(k))
 end

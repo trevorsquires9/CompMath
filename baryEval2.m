@@ -32,8 +32,9 @@ for j = 1:m
     num = 0;
     denom = 0;
     for i=1:n
-        num = y(i)*mu(i)/(x0(j)-x(i)) + num;
-        denom = mu(i)/(x0(j)-x(i)) + denom;
+        tmpDenom =  mu(i)/(x0(j)-x(i));
+        denom = denom+tmpDenom;
+        num = tmpDenom*y(i) + num;
     end
     lx(j) = num/denom;
     
