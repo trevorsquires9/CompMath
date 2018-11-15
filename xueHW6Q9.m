@@ -111,7 +111,7 @@ for k = 1:length(n)
     x = chebyshevPoints(a,b,n(k));
     y = f(x);
     tic
-    mu = chebyshevWeights(n(k)+1);
+    mu = baryWeights(x);
     baryEval1(x,y,mu,s);
     time = toc;
     fprintf('Elapsed time is %0.6f seconds for n = %d.\n',time,n(k))
