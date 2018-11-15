@@ -6,7 +6,11 @@
 %   Problem 10.6
 %
 % Function Dependencies
-%   
+%   monoInterp.m
+%   baryWeights.m
+%   divdif.m
+%   baryEval2.m
+%   evalNewt.m
 %
 % Notes
 %   None

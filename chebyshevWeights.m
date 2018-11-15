@@ -2,7 +2,7 @@
 % CHEBYSHEVWEIGHTS.m
 %
 % DESCRIPTION
-%   Computes barycentric weights using type 1 formula
+%   Computes Chebyshev weights used in type 2 formula
 %
 % AUTHOR
 %   Trevor Squires

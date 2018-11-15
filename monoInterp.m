@@ -16,8 +16,7 @@
 %
 % NOTES
 %   Asserts the size of each vector
-%   Requires all points in x to be distinct (for nonsingularity)
-%   Returns coefficients in descending order
+%   Returns coefficients in ascending order
 %   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 

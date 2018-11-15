@@ -18,7 +18,6 @@
 %
 % NOTES
 %   Asserts the size of each vector
-%   Requires all points in x and x0 to be distinct (for nonsingularity)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 

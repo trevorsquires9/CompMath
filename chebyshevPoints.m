@@ -2,7 +2,7 @@
 % CHEBYSHEVPOINTS.m
 %
 % DESCRIPTION
-%   Computes barycentric weights using type 1 formula
+%   Computes Chebyshev points
 %
 % AUTHOR
 %   Trevor Squires

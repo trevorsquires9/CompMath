@@ -2,7 +2,7 @@
 % BARYWEIGHTS.m
 %
 % DESCRIPTION
-%   Computes barycentric weights using type 1 formula
+%   Computes barycentric weights used in type 1 formula
 %
 % AUTHOR
 %   Trevor Squires
