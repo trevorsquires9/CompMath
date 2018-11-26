@@ -13,7 +13,7 @@
 %   rombInt.m
 %
 % Notes
-%   None
+%   Need to add in corrected composite trapezoid because of derivative
 %
 % Author
 %   Trevor Squires
