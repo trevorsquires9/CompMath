@@ -1,14 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COMPTRAP.m
+% COMPTRAPCORR.m
 %
 % DESCRIPTION
-%   Uses composite trapezoid rule to approximate the integral of f(x)
+%   Uses corrected composite trapezoid rule to approximate the integral of f(x)
 %
 % AUTHOR
 %   Trevor Squires
 %
 % ARGUMENTS
 %   f - function handle
+%   fprime - derivative handle
 %   a - left endpoint
 %   b - right endpoint
 %   n - number of subintervals
@@ -22,15 +23,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [int_approx] = compTrap(f,a,b,n)
+function [int_approx] = compTrapCorr(f,fprime,a,b,n)
 
 h = (b-a)/n;
 pts = linspace(a,b,n+1);
-int_approx = 0;
+sum = 0;
 
 for i = 2:n
-    int_approx = int_approx + f(pts(i)); %inner sum
+    sum = sum + f(pts(i));
 end
 
-int_approx = int_approx + f(pts(1))/2 + f(pts(n+1))/2;
-int_approx = int_approx*h;
+int_approx = h/2 * (f(pts(1)) + 2*sum + f(pts(end))) + (h^2)/12 * ...
+    (fprime(pts(1)) - fprime(pts(end)));
+end

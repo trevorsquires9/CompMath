@@ -28,7 +28,9 @@ count = 2;
 history = [x0 x1];
 
 while error > tol
-    history(count+1) = history(count) - f(history(count))*(history(count)- history(count-1))/(f(history(count))-f( history(count-1)));
+    history(count+1) = history(count) - ...
+        f(history(count))*(history(count)- ...
+        history(count-1))/(f(history(count))-f( history(count-1)));
     count = count +1;
     error = abs(history(count)-history(count-1));
 end

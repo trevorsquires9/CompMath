@@ -2,7 +2,7 @@
 % COMPSIMP.m
 %
 % DESCRIPTION
-%   Uses composite trapezoid rule to approximate the integral of f(x)
+%   Uses composite simpsons rule to approximate the integral of f(x)
 %
 % AUTHOR
 %   Trevor Squires
