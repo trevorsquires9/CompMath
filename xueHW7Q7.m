@@ -35,6 +35,7 @@ cBoole = zeros(1,N);
 
 %% First function
 f = @(x) 1./(5*x.^4 + 4*x.^3 + 3*x.^2 + 2*x + 1);
+fprime = @(x) -2*(10*x.^3 + 6*x.^2 + 3*x + 1)./(5*x.^4 + 4*x.^3 + 3*x.^2 + 2*x+1).^2;
 a = -1;
 b = 1;
 
@@ -42,7 +43,7 @@ real_int = integral(f,a,b);
 fprintf('For function 1, \n')
 for i = 1:N
     cTrap(i) = compTrap(f,a,b,n(i)) - real_int;
-    %ccTrap(i) = compTrapCorr(f,a,b,n(i)) - real_int;
+    ccTrap(i) = compTrapCorr(f,fprime,a,b,n(i)) - real_int;
     cSimp(i) = compSimp(f,a,b,n(i)) - real_int;
     cBoole(i) = compBoole(f,a,b,n(i)) - real_int;
 end
@@ -71,14 +72,15 @@ fprintf('And Romberg integration with %d subintervals had an error of %e\n\n',n(
 
 %% Second function
 f = @(x) sqrt(x);
+fprime = @(x) 1/2./sqrt(x);
 a = 0;
 b = 1;
-fprintf('For function 1, \n')
+fprintf('For function 2, \n')
 real_int = 2/3;
 
 for i = 1:length(n)
     cTrap(i) = compTrap(f,a,b,n(i)) - real_int;
-    %ccTrap(i) = compTrapCorr(f,a,b,n(i)) - real_int;
+    ccTrap(i) = compTrapCorr(f,fprime,1e-12,b,n(i)) - real_int;
     cSimp(i) = compSimp(f,a,b,n(i)) - real_int;
     cBoole(i) = compBoole(f,a,b,n(i)) - real_int;
 end
@@ -104,14 +106,15 @@ fprintf('And Romberg integration with %d subintervals had an error of %e\n\n',n(
 
 %% Third function
 f = @(x) 1/2/pi * sqrt(1-0.36*sin(x).^2);
+fprime = @(x) 1/2/pi * -0.36*sin(x).*cos(x)./ sqrt(1-0.36*sin(x).^2);
 a = 0;
 b = 2*pi;
-fprintf('For function 1, \n')
+fprintf('For function 3, \n')
 real_int = 0.9027799277721939;
 
 for i = 1:length(n)
     cTrap(i) = compTrap(f,a,b,n(i)) - real_int;
-    %ccTrap(i) = compTrapCorr(f,a,b,n(i)) - real_int;
+    ccTrap(i) = compTrapCorr(f,fprime,a,b,n(i)) - real_int;
     cSimp(i) = compSimp(f,a,b,n(i)) - real_int;
     cBoole(i) = compBoole(f,a,b,n(i)) - real_int;
 end
