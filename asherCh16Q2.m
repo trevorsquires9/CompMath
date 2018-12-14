@@ -39,7 +39,7 @@ for k = 1:length(h)
     trueY = 1./t;
     err = abs(y-trueY);
     global_err(k) = err(end);
-    fprintf('h = %e\tGlobal Error at x = %d is %e\t',h(k),int(2),global_err(k))
+    fprintf('h = %e:\tGlobal Error at x = %d is %e\t',h(k),int(2),global_err(k))
     if k ~= 1
         fprintf('Rate = %0.3f',log(global_err(k-1)/global_err(k))/log(h(k-1)/h(k)));
     end
