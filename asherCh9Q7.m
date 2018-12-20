@@ -22,19 +22,21 @@ close all;
 %% Initialize necessary variables
 tol = 10e-10;
 n = [8,16,32,64];
+y0 = 0;
+yEnd = log(2);
 
 for j = 1:length(n)
     h = 1/(n(j)+1);
     t = 1:h:2;
     solu = log(t(2:n(j)+1));
-    y0 = rand(1,n(j));
-    error = norm(y0,2);
-    iterate = y0;
+    startY = rand(1,n(j));
+    error = norm(startY,2);
+    iterate = startY;
     i = 1;
     fprintf('\nFor n=%d\n',n(j))
     while error > tol
         y = iterate(i,:);
-        [jfxk, fxk] = functionEval(y,h);
+        [jfxk, fxk] = functionEval(y,y0,yEnd,h);
         update = (jfxk\fxk'); %solve y = inv(jfxk)*fxk
         iterate(i+1,:) = iterate(i,:)-update'; %update xk+1 = xk - update
         i = i+1;
@@ -45,10 +47,10 @@ for j = 1:length(n)
 end
 
 %% Evaluation function
-function [myJac,fy] = functionEval(y,h)
+function [myJac,fy] = functionEval(y,y0,yEnd,h)
 
 n = length(y);
-y = [0 y log(2)];
+y = [y0 y yEnd];
 
 %% Evaluate our F at x
 fy = zeros(1,n);
@@ -60,12 +62,12 @@ end
 myJac = zeros(n);
 diags = zeros(1,n-1);
 
-for i = 1:n-1
+for i = 1:n
     diags(i) = (y(i+2)-y(i))/2/h^2;
 end
 
 myJac = myJac + diag(ones(1,n)*(1-2/(h^2)));
-myJac = myJac + diag((1/h^2)+diags,1) + diag(diags*(-1)+(1/h^2),-1);
+myJac = myJac + diag((1/h^2)+diags(1:end-1),1) + diag((1/h^2)-diags(2:end),-1);
 
 end
 

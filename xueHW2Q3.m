@@ -20,7 +20,7 @@ clc
 close all;
 
 %% Initialize necessary variables
-tol = 10e-8;
+tol = 10e-15;
 xstar = [pi 2 exp(1)];
 x0 = [3 3 3];
 
