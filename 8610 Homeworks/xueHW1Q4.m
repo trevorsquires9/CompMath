@@ -55,8 +55,10 @@ xhat = R\newb;
 forErrQR(j) = norm(xhat-xtrue)/norm(xtrue);
 backErrQR(j) = norm(b-A*xhat)/normA/norm(xhat);
 
-
 %Cramer's Rule
+xhat = cramersRule(A,b);
+forErrCramer(j) = norm(xhat-xtrue)/norm(xtrue);
+backErrCramer(j) = norm(b-A*xhat)/normA/norm(xhat);
 
 %A inverse b
 xhat = inv(A)*b;
