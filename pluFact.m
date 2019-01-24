@@ -20,11 +20,13 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [A,p] = pluFact(A,~)
+function [A,p,growth] = pluFact(A,~)
 
 [m,n] = size(A);
 assert(m == n,'Please insert square matrix')
 p = 1:n;
+iniGrowth = max(max(A));
+growth = iniGrowth;
 
 for i = 1:n-1
     J = i+1:n;
@@ -43,5 +45,11 @@ for i = 1:n-1
     
     %And then do the elimination on the rest of the matrix
     A(J,J) = A(J,J) - A(J,i) * A(i,J);
+    
+    %Identify growth factor
+    if max(max(A(J,J))) > growth
+        growth = max(max(A));
+    end
 end
+growth = growth/iniGrowth;
 end
