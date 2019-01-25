@@ -19,7 +19,7 @@ clear
 clc
 close all;
 
-length = 20;
+length = 25;
 f = @(k) (6.^(k+1) + 5.^(k+1))./(6.^k + 5.^k);
 xk = zeros(1,length);
 fk = f(0:length-1);

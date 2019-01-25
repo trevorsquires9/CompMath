@@ -25,15 +25,11 @@ load 'wilk24mc.mat'
 
 int = 16:20;
 xk = int;
-ak = wCoeff(int+1)';
-dpxk = zeros(1,int(end)-int(1)+1);
+ak = wCoeff(25-int)';
+wPrime = polyder(wCoeff)';
 
-for i = int
-    myRoots = 1:24;
-    tmp = myRoots-i;
-    tmp(i) = 1;
-    dpxk(i-int(1)+1) = prod(tmp);
-end
+dpxk = polyval(wPrime,int);
+
 
 conditioning = xk.^(int-1).*ak./dpxk;
 
@@ -45,8 +41,13 @@ fprintf('The %d-th root is most sensitive to perturbations in the %d-th coeffici
 compRoots = roots(wCoeff);
 compRoots = sort(compRoots);
 err = (1:24)'-compRoots;
+relErr = err./(1:24)';
 
-wCoeff(20) = wCoeff(20)*(1+1e-7);
-compRoots = roots(wCoeff);
-compRoots = sort(compRoots);
-newErr = (1:24)'-compRoots;
+for i = 1:length(relErr)
+    relErr(i) = norm(relErr(i));
+end
+
+plot(1:24,relErr,'*k')
+title('Relative Error of Roots')
+ylabel('Relative Error')
+xlabel('Root')

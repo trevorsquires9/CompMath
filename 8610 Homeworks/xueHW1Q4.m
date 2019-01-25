@@ -6,7 +6,9 @@
 %   4
 %
 % Function Dependencies
-%   None
+%   cramersRule.m
+%   matSolve.m
+%   pluFact.m
 %
 % Notes
 %   None
@@ -71,3 +73,31 @@ forErrGE(j) = norm(xhat-xtrue)/norm(xtrue);
 backErrGE(j) = norm(b-A*xhat)/normA/norm(xhat);
 
 end
+
+plot(n,log10(forErrGE),'g--')
+hold on
+plot(n,log10(forErrAinv),'r-.')
+hold on
+plot(n,log10(forErrMat),'b:')
+hold on
+plot(n,log10(forErrQR),'k-')
+
+title('Semilogy Plot of Forward Errors')
+xlabel('n')
+ylabel('Log(Forward Error)')
+legend('GE', 'inv(A)b','GEPP','QR','location','best')
+
+
+figure()
+plot(n,log10(backErrGE),'g--')
+hold on
+plot(n,log10(backErrAinv),'r-.')
+hold on
+plot(n,log10(backErrMat),'b:')
+hold on
+plot(n,log10(backErrQR),'k-')
+
+title('Semilogy Plot of Backward Errors')
+xlabel('n')
+ylabel('Log(Backward Error)')
+legend('GE', 'inv(A)b','GEPP','QR','location','best')
