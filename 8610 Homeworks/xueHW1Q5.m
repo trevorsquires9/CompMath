@@ -22,7 +22,7 @@ tic
 exp = 5:10;
 n = 2.^exp;
 k = length(n);
-trials = 1;
+trials = 500;
 counts = zeros(1,k);
 
 for j = 1:k
@@ -35,4 +35,6 @@ for j = 1:k
         end
     end
 end
-toc 
+time = toc;
+
+save('results')
