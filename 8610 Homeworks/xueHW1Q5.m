@@ -19,10 +19,10 @@ clear
 clc
 close all;
 tic
-exp = 5:10;
+exp = 5:11;
 n = 2.^exp;
 k = length(n);
-trials = 500;
+trials = 5000;
 counts = zeros(1,k);
 
 for j = 1:k

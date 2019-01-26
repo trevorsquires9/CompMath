@@ -2,8 +2,8 @@
 #!/bin/bash
 #
 #PBS -N test_matlab
-#PBS -l select=1:ncpus=2:mem=62gb
-#PBS -l walltime=1:00:00
+#PBS -l select=1:ncpus=8:mem=125gb
+#PBS -l walltime=24:00:00
 #PBS -m abe
 #PBS -M tsquire@g.clemson.edu
 #PBS -j oe
