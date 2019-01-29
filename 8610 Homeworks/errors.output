@@ -1,14 +1,4 @@
-
-                            < M A T L A B (R) >
-                  Copyright 1984-2017 The MathWorks, Inc.
-                   R2017a (9.2.0.556344) 64-bit (glnxa64)
-                               March 27, 2017
-
  
-To get started, type one of these: helpwin, helpdesk, or demo.
-For product information, visit www.mathworks.com.
- 
->>  
  
 +------------------------------------------+ 
 | PALMETTO CLUSTER PBS RESOURCES REQUESTED | 
@@ -21,6 +11,6 @@ mem=125gb,ncpus=8,walltime=72:00:00
 | PALMETTO CLUSTER PBS RESOURCES USED | 
 +-------------------------------------+ 
  
-cpupercent=635,cput=22:31:40,mem=551404kb,ncpus=8,vmem=5459744kb,walltime=03:35:32
+cpupercent=381,cput=124:14:14,mem=738772kb,ncpus=8,vmem=5675028kb,walltime=36:44:58
  
  
