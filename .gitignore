@@ -16,3 +16,4 @@ lagrangeEval1.m
 lagrangeEval2.m
 barycentricType1.m
 *.asv
+*.mat
