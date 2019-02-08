@@ -20,7 +20,6 @@ clc
 close all;
 tic
 
-exp = 5:5;
 n = 2.^exp;
 k = length(n);
 trials = 5;
