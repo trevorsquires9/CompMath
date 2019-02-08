@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% QRGS.m
+% qrcgs.m
 %
 % DESCRIPTION
 %   Decomposes a rectangular matrix A in rectangular matrix Q and square

@@ -20,10 +20,10 @@ clc
 close all;
 tic
 
-exp = 5:10;
+exp = 5:5;
 n = 2.^exp;
 k = length(n);
-trials = 5000;
+trials = 5;
 counts = zeros(1,k);
 saveFreq = 100;
 
