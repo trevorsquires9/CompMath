@@ -44,7 +44,8 @@ matBackErr = zeros(1,matrixCount);
 
 %% Evaluation 
 for i = 1:matrixCount
-    solu = ones(n(i),1);
+    powers = (2:n(i)+1)';
+    solu = (-1*ones(n(i),1)).^powers;
     b = A{i}*solu;
     
     [v,R] = house(A{i});

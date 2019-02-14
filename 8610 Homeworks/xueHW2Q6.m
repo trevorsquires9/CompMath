@@ -3,7 +3,7 @@
 %   Homework 2
 %
 % Problem
-%   4 - Trefethen 11.3
+%   6 - Trefethen 11.3
 %
 % Function Dependencies
 %   house.m
