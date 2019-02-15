@@ -21,14 +21,10 @@ clear
 clc
 close all;
 
-clear
-clc
-close all;
-
 m = 41;
-n = 5:4:37;
+n = 5:4:m;
 
-matrixCount = 9;
+matrixCount = 10;
 A = cell(matrixCount,1);
 u = (-1:2/40:1)';
 condition= zeros(matrixCount,1);
@@ -51,12 +47,18 @@ for i = 1:matrixCount
     [v,R] = house(A{i});
     y = houseEval(v,b,1);
     mySolu = [R;zeros(m-n(i),n(i))]\y;
-    matSolu = A{i}\b;
+    matSolu = mldivide(A{i},b);
     
     myBackErr(i) = norm(b-A{i}*mySolu,2)/norm(A{i},2)/norm(mySolu,2);
     matBackErr(i) = norm(b-A{i}*matSolu,2)/norm(A{i},2)/norm(matSolu,2);
 end
-    
+
+figure();
+semilogx(n,myBackErr,'bo',n,matBackErr,'r*')
+xlabel('Size of matrix')
+ylabel('Backward Error')
+title('Errors on Solving Linear Least Squares')
+legend('My Errors','MATLAB Errors')
     
     
     
