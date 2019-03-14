@@ -6,7 +6,7 @@
 %   6
 %
 % Function Dependencies
-%   HW3_GKLsvds.m
+%   GKNaive.m
 %
 % Notes
 %   None
@@ -34,12 +34,13 @@ A = col.^(0:31);
 [Q,R] = qr(A,0);
 B = GKnaive(R);
 
-eigenBlarge = eigs([zeros(32) B';B zeros(32)],5,'largestabs');
-eigenBsmall = eigs([zeros(32) B';B zeros(32)],5,'smallestabs');
+eigenB = abs(eig([zeros(32) B';B zeros(32)]));
+largestB = eigenB(end-4:end);
+smallestB = eigenB(1:5);
 
-eigenAlarge = sqrt(abs(eigs(A'*A,5,'largestabs')));
-eigenAsmall = sqrt(abs(eigs(A'*A,5,'smallestabs')));
-
+eigenA = sqrt(abs(eig(A'*A)));
+largestA = eigenA(end-4:end);
+smallestA = eigenA(1:5);
 
 
 
