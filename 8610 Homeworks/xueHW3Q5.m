@@ -21,7 +21,7 @@ close all;
 load picA
 
 %% A
-rk = 320; 
+rk = 160; 
 tic; [Us1,Ss1,Vs1] = HW3_GKLsvds(pic_A(:,:,1),rk); toc;
 tic; [Us2,Ss2,Vs2] = HW3_GKLsvds(pic_A(:,:,2),rk); toc;
 tic; [Us3,Ss3,Vs3] = HW3_GKLsvds(pic_A(:,:,3),rk); toc;

@@ -34,9 +34,9 @@ A = col.^(0:31);
 [Q,R] = qr(A,0);
 B = GKnaive(R);
 
-eigenB = abs(eig([zeros(32) B';B zeros(32)]));
+eigenB = sort(abs(eig([zeros(32) B';B zeros(32)])));
 largestB = eigenB(end-4:end);
-smallestB = eigenB(1:5);
+smallestB = eigenB(1:10);
 
 eigenA = sqrt(abs(eig(A'*A)));
 largestA = eigenA(end-4:end);
