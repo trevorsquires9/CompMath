@@ -39,7 +39,8 @@ x(:,m+1) = xtilde(:,m+1);
 for i = 3+m-1:maxIt
     xtilde(:,i) = g(x(:,i-1),xtilde(:,i-1),x(:,i-2));
     alphaFunc = @(z) andersonSubProblem(z,x,xtilde,m,i);
-    [alpha,fVal] = fmincon(alphaFunc,ones(m,1));
+    options = optimoptions('fmincon','Display','off');
+    [alpha,fVal] = fmincon(alphaFunc,ones(m,1),[],[],[],[],[],[],[],options);
     theta(i) = fVal/norm(xtilde(:,i)-x(:,i-1));
     if theta(i)>1 %numerical difficulties using fmincon
         theta(i) = 1;

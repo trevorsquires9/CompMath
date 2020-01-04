@@ -7,7 +7,7 @@ end
 
 L = ichol(A);
 mfun = @(u) L'\(L\u);
-gx = pcg(A,x,tol,1000,mfun);
+[gx,~] = pcg(A,x,tol,1000,mfun);
 
 
 gx = gx/norm(gx);
