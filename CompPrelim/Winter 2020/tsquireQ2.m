@@ -1,4 +1,18 @@
-%% Prelim Assignment Script Question 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TSQUIREQ2.m
+%
+% DESCRIPTION
+%   Script for computing results for question 2
+%
+% AUTHOR
+%   Trevor Squires
+%
+% FUNCTION DEPENDENCIES
+%   - anderson.m
+%   - fpiPowerMethod.m
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 clear
 clc
 close all;

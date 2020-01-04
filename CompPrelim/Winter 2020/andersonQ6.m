@@ -1,25 +1,48 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ANDERSON.m
+% ANDERSONQ6.m
 %
 % DESCRIPTION
-%   Uses the power method with Anderson acceleration to compute the closest eigenpair to alpha of a matrix A
+%   Uses Anderson acceleration to accelerate the performance of
+%   power/inverse method. The only difference between this code and
+%   anderson.m is this code sends additional parameters to the input
+%   function g()
 %
 % AUTHOR
 %   Trevor Squires
 %
 % ARGUMENTS
 %   A - n x n matrix
-%   v0 - 1 x n vector of initial guess for eigenvector
+%   v0 - n x 1 vector of initial guess for eigenvector
+%   g - function used to generate the next point.  For power method, try
+%       g(x) = A*x/||A*x||, and for inverse method, try g(x) = (A\x)/(||A\x||)
 %   tol - tolerance for quitting
+%   m - number of iterate history to look back on
+%   maxIt - maximum number of iterations before quitting
 %
 % OUTPUT
-%   lambda - eigenvalue approximation vector
-%   v - closest eigenvector to alpha's eigenvector
+%   x - matrix of eigenvector approximations
+%   w - matrix of fixed point iteration error vectors
+%   theta - vector of gains via Anderson acceleration
 %
 % NOTES
-%   Fixes the size of the vector if transposed, errors if not right size.
+%   - Saves on computing Ax by storing the matrix-vector product after the
+%   first computation
+%   - Poorly computes the solution to the Anderson acceleration
+%   optimization problem. Since fminsearch calls a specified function
+%   multiple times, it takes a long amount of time to complete. This could
+%   be improved by writing a specialized optimizer for the subproblem, but
+%   is not done here. The convergence results are still the same, but the
+%   time to run may be longer than necessary. 
+%   - MATLAB's fminsearch may not always find the optimal solution (it may
+%   converge prematurely).  As such, sometimes the gain is slightly greater
+%   than 1 (usually 1.005 or something). To alleviate this, whenever the
+%   gain is greater than 1, this code manually forces alpha = (1,0,...,0)^T
+%   - To allow the m-level Anderson subproblem to work on the first
+%   iteration, the first m vectors are initialized to v0.  This does not
+%   affect the optimization problem, and allows for more elegant code. 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 
@@ -39,8 +62,7 @@ x(:,m+1) = xtilde(:,m+1);
 for i = 3+m-1:maxIt
     xtilde(:,i) = g(x(:,i-1),xtilde(:,i-1),x(:,i-2));
     alphaFunc = @(z) andersonSubProblem(z,x,xtilde,m,i);
-    options = optimoptions('fmincon','Display','off');
-    [alpha,fVal] = fmincon(alphaFunc,ones(m,1),[],[],[],[],[],[],[],options);
+    [alpha,fVal] = fminsearch(alphaFunc,ones(m,1));
     theta(i) = fVal/norm(xtilde(:,i)-x(:,i-1));
     if theta(i)>1 %numerical difficulties using fmincon
         theta(i) = 1;
@@ -49,10 +71,10 @@ for i = 3+m-1:maxIt
         x(:,i) = x(:,i)+alpha(j+1)*xtilde(:,i-j);
     end
     x(:,i) = x(:,i) + (1-alpha'*ones(m,1))*xtilde(:,i-m);
-        
-    
     w(:,i) = xtilde(:,i) - x(:,i-1);
-    error = norm(A*x(:,i)- x(:,i)'*A*x(:,i)/(x(:,i)'*(x(:,i)))*x(:,i));
+    
+    tmp = A*x(:,i);
+    error = norm(tmp- x(:,i)'*tmp/(x(:,i)'*(x(:,i)))*x(:,i));
     
     
     if error<tol

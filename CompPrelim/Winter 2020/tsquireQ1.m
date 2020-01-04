@@ -1,4 +1,18 @@
-%% Prelim Assignment Script Question 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TSQUIREQ1.m
+%
+% DESCRIPTION
+%   Script for computing results for question 1
+%
+% AUTHOR
+%   Trevor Squires
+%
+% FUNCTION DEPENDENCIES
+%   - powerIteration.m
+%   - fpiPowerMethod.m
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 clear
 clc
 close all;
@@ -30,3 +44,9 @@ observedRates = zeros(iterations-1,1);
 for i = 1:iterations-1
     observedRates(i) = error(i+1)/error(i);
 end
+
+figure();
+semilogy(abs(eVals(1,1)-lambda))
+title('Eigenvalue errors')
+xlabel('Iteration')
+ylabel('Absolute error')
