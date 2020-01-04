@@ -1,3 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ANDERSONSUBPROBLEM.m
+%
+% DESCRIPTION
+%   Constructs a function handle for the Anderson acceleration optimization problem to be solved.
+%
+% AUTHOR
+%   Trevor Squires
+%
+% ARGUMENTS
+%   alpha - argument to the problem
+%   x - history of iterates
+%   xtilde - history of approximate iterates
+%   m - length of history to look back at
+%   k - current iteration
+%
+% OUTPUT
+%   output - output of the optimization problem
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [output] = andersonSubProblem(alpha,x,xtilde,m,k)
 output = 0;
 for i = 1:m

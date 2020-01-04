@@ -24,6 +24,9 @@
 %   w - matrix of fixed point iteration error vectors
 %   theta - vector of gains via Anderson acceleration
 %
+% FUNCTION DEPENDENCIES
+%   - andersonSubProblem.m
+%
 % NOTES
 %   - Saves on computing Ax by storing the matrix-vector product after the
 %   first computation
