@@ -6,7 +6,7 @@
 %   power/inverse method. 
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % ARGUMENTS
 %   A - n x n matrix

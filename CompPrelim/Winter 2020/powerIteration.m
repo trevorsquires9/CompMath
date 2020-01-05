@@ -5,7 +5,7 @@
 %   Uses the power/inverse method to compute eigenvalues of a matrix A
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % ARGUMENTS
 %   A - n x n matrix

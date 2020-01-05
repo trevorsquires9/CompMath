@@ -6,7 +6,7 @@
 %   compute a normalized vector in the direction of A^{-1}x
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % ARGUMENTS
 %   A - n x n matrix

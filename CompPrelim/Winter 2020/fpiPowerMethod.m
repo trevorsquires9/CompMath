@@ -5,7 +5,7 @@
 %   Computes the normalized vector in the direction of Ax
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % ARGUMENTS
 %   A - n x n matrix

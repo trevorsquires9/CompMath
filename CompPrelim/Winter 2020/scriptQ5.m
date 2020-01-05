@@ -1,15 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TSQUIREQ2.m
+% scriptQ5.m
 %
 % DESCRIPTION
-%   Script for computing results for question 2
+%   Script for computing results for question 5
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % FUNCTION DEPENDENCIES
 %   - anderson.m
-%   - fpiPowerMethod.m
+%   - fpiInverseMethod.m
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19,18 +19,18 @@ close all;
 
 
 %% Initialize Variables
-k = 40;
+k = 128;
 n = k^2;
 A = gallery('poisson',k);
-tol = 1e-4;
+tol = 1e-8;
 x0 = eye(n,1);
 maxIt = 5000;
-m = 1:5;
+m = 1:2;
 
 figure();
 for i = 1:length(m)
     %% Obtain Eigenvalue Estimates
-    [iterates,w,gain] = anderson(A,x0,@(x) fpiPowerMethod(A,x),tol,m(i),maxIt);
+    [iterates,w,gain] = anderson(A,x0,@(x) fpiInverseMethod(A,x),tol,m(i),maxIt);
     [~,itCount] = size(iterates);
     
     %% Plot each experiment
@@ -47,3 +47,4 @@ for i = 1:length(m)
     xlabel('Iteration')
     ylabel('W Norm')
 end
+

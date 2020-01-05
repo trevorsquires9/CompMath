@@ -1,11 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TSQUIREQ1.m
+% scriptQ1.m
 %
 % DESCRIPTION
 %   Script for computing results for question 1
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % FUNCTION DEPENDENCIES
 %   - powerIteration.m

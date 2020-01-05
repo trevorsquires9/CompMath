@@ -5,7 +5,7 @@
 %   Constructs a function handle for the Anderson acceleration optimization problem to be solved.
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % ARGUMENTS
 %   alpha - argument to the problem

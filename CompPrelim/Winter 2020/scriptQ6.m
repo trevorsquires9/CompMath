@@ -1,11 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TSQUIREQ6.m
+% scriptQ6.m
 %
 % DESCRIPTION
 %   Script for computing results for question 6
 %
 % AUTHOR
-%   Trevor Squires
+%   88759
 %
 % FUNCTION DEPENDENCIES
 %   - anderson.m
