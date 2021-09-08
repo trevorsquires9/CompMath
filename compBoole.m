@@ -2,7 +2,7 @@
 % COMPBOOLE.m
 %
 % DESCRIPTION
-%   Uses  composite booles rule to approximate the integral of f(x)
+%   Uses composite booles rule to approximate the integral of f(x)
 %
 % AUTHOR
 %   Trevor Squires
