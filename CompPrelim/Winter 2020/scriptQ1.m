@@ -27,7 +27,7 @@ x0 = eye(n,1);
 maxIt = 5000;
 
 %% Obtain Eigenvalue Estimates
-[lambda,myEvec] = powerIteration(A,x0,@(x) fpiPowerMethod(A,x),tol,maxIt);
+[lambda,myEvec] = powerIteration(A,x0,@(x) fpiPowerMethod(A,x),tol,maxIt,0);
 
 %% Analyze Convergence Results
 [eVecs,eVals] = eigs(A,2);
