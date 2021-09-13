@@ -2,20 +2,20 @@
 % shiftedQR.m
 %
 % DESCRIPTION
-%   Performs QR decomposition using efficient Wilkinson shifts and
-%   deflation. 
+%   Solves a linear system using a semidirect linear solver (jacobi, gauss-seidel, sor) 
 % AUTHOR
 %   Trevor Squires
 %
 % ARGUMENTS
 %   A - n x n matrix
-%   maxIt - iterations until we stop
-%   tol - tolerance for deflation
+%   b - n x 1 vector
+%   M - matrix to "precondition" with (e.g. diag(diag(A)) for jacobi, triu(A) for gauss-seidel)
+%   Minv - a function handle that computes a solution z to Mz=y
+%   x0 - initial guess
+%   it - max iterations to use
 %
 % OUTPUT
-%   myEigs - vector of eigenvalues
-%   it - total number of iterations (not necessarily on an n x n matrix)
-%   executed. Returns empty if executed all maxIt
+%   solu - approximate solution after it iterations
 %
 % NOTES
 %   
@@ -28,5 +28,5 @@ solu = zeros(n,it);
 solu(:,1) = x0;
 
 for i = 1:it-1
-    solu(:,i+1) = MInv(M*solu(:,i) - A*solu(:,i) + b);
+    solu(:,i+1) = MInv(M*solu(:,i) - A*solu(:,i) + b); %iteratively do the update
 end
